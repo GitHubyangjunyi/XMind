@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/element-plus/dist/index.css">  <!--第一步引入样式文件-->
+    <script src="//unpkg.com/vue@next"></script>                                            <!--第二步引入Vue-->
+    <script src="//unpkg.com/element-plus"></script>                                        <!--第三步引入Element Plus-->
+    <title>Document</title>
+    <style>
+        /*如果外部样式放在内部样式的后面则外部样式将覆盖内部样式*/
+    </style>
+</head>
+<body>
+    <p>当直接使用script标签引入Element Plus时其下所有组件都挂载在全局变量ElementPlus下,如需使用某个组件的属性或者方法直接通过ElementPlus访问,ElementPlus.ElMessageBox.confirm</p>
+    
+    <div id="app">
+        <el-button type="primary" plain @click="clickEvent">增加</el-button>
+        <el-select v-model="" value-key="" placeholder="" clearable filterable @change="">
+            <el-option v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+            </el-option>
+        </el-select>
+        
+    </div>
+    
+    
+    <script>
+        const App = {
+            data() {
+            return {
+                message: "Hello Element Plus",
+                options: [
+                    '1', '2'
+                ]
+            };
+            },
+            methods: {
+                clickEvent() {
+                    console.log('cccc')
+                }
+            },
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.mount("#app");
+
+    </script>
+</body>
+</html>
